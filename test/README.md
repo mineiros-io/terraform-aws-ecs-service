@@ -65,12 +65,12 @@ Alternatively, you can also run the tests without Docker.
 
 <!-- markdown-link-check-disable -->
 
-[makefile]: https://github.com/mineiros-io/terraform-module-template/blob/master/Makefile
-[testdirectory]: https://github.com/mineiros-io/terraform-module-template/tree/master/test
+[makefile]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/master/Makefile
+[testdirectory]: https://github.com/mineiros-io/terraform-aws-ecs-service/tree/master/test
 
 <!-- markdown-link-check-enable -->
 
-[homepage]: https://mineiros.io/?ref=terraform-module-template
+[homepage]: https://mineiros.io/?ref=terraform-aws-ecs-service
 [terratest]: https://github.com/gruntwork-io/terratest
 [package testing]: https://golang.org/pkg/testing/
 [docker]: https://docs.docker.com/get-started/
