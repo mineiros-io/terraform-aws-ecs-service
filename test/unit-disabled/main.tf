@@ -28,6 +28,7 @@ module "test" {
 
   module_enabled = false
 
+  # add all required arguments
   cluster = "none-existing-cluster"
   name    = "disabled-ecs-service"
   task_definition = {
@@ -44,6 +45,7 @@ module "test" {
     ]
   }
 
+  # add all optional arguments that create additional resources
 }
 
 output "all" {
