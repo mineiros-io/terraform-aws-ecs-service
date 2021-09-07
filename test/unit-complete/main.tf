@@ -29,15 +29,16 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_default_vpc" "default" {
+data "aws_vpc" "default" {
+  default = true
 }
 
 data "aws_subnet_ids" "default" {
-  vpc_id = aws_default_vpc.default.id
+  vpc_id = data.aws_vpc.default.id
 }
 
 resource "aws_default_security_group" "default" {
-  vpc_id = aws_default_vpc.default.id
+  vpc_id = data.aws_vpc.default.id
 }
 
 resource "aws_ecs_cluster" "ecs" {
@@ -123,6 +124,7 @@ module "task-execution-policy" {
   ]
 }
 
+# DO NOT RENAME MODULE NAME
 module "test" {
   source = "../.."
 
@@ -171,14 +173,9 @@ module "test" {
 
   capacity_provider_strategy = [
     {
-      capacity_provider = "FARGATE"
-      weight            = 1
-      base              = 2
-    },
-    {
       capacity_provider = "FARGATE_SPOT"
-      weight            = 2
-      base              = null
+      weight            = 1
+      base              = 1
     },
   ]
 
@@ -197,9 +194,8 @@ module "test" {
   enable_execute_command  = true
   force_new_deployment    = true
 
-  # setting this to zero will disable the rolling deployment and simply stop all tasks before deploying new ones
-  deployment_minimum_healthy_percent = 0
-  deployment_maximum_percent         = 100
+  deployment_minimum_healthy_percent = 100
+  deployment_maximum_percent         = 200
   propagate_tags                     = "TASK_DEFINITION"
 
   service_tags = {
