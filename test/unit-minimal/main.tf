@@ -25,13 +25,15 @@ provider "aws" {
   region = var.aws_region
 }
 
+# DO NOT RENAME MODULE NAME
 module "test" {
   source = "../.."
 
   # add only required arguments and no optional arguments
 }
 
-output "all" {
-  description = "All outputs of the module."
-  value       = module.test
-}
+# outputs generate non-idempotent terraform plans so we disable them for now unless we need them.
+# output "all" {
+#   description = "All outputs of the module."
+#   value       = module.test
+# }

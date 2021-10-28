@@ -143,7 +143,7 @@ See [variables.tf] and [examples/] for details and use-cases.
   A user object.
   Default is `true`.
 
-  A/Each `user` object can can the fllowing fields:
+  A/Each `user` object can have the following fields:
 
   - **`name`**: **_(Required `string`)_**
 
@@ -270,19 +270,19 @@ Copyright &copy; 2020-2021 [Mineiros GmbH][homepage]
 [badge-tf-aws]: https://img.shields.io/badge/AWS-3-F8991D.svg?logo=terraform
 [releases-aws-provider]: https://github.com/terraform-providers/terraform-provider-aws/releases
 [apache20]: https://opensource.org/licenses/Apache-2.0
-[slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
+[slack]: https://mineiros.io/slack
 [terraform]: https://www.terraform.io
 [aws]: https://aws.amazon.com/
 [semantic versioning (semver)]: https://semver.org/
 
 <!-- markdown-link-check-disable -->
 
-[variables.tf]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/master/variables.tf
-[examples/]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/master/examples
+[variables.tf]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/main/variables.tf
+[examples/]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/main/examples
 [issues]: https://github.com/mineiros-io/terraform-aws-ecs-service/issues
-[license]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/master/LICENSE
-[makefile]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/master/Makefile
+[license]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/main/LICENSE
+[makefile]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/main/Makefile
 [pull requests]: https://github.com/mineiros-io/terraform-aws-ecs-service/pulls
-[contribution guidelines]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/master/CONTRIBUTING.md
+[contribution guidelines]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/main/CONTRIBUTING.md
 
 <!-- markdown-link-check-enable -->

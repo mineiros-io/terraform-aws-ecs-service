@@ -65,8 +65,8 @@ Alternatively, you can also run the tests without Docker.
 
 <!-- markdown-link-check-disable -->
 
-[makefile]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/master/Makefile
-[testdirectory]: https://github.com/mineiros-io/terraform-aws-ecs-service/tree/master/test
+[makefile]: https://github.com/mineiros-io/terraform-aws-ecs-service/blob/main/Makefile
+[testdirectory]: https://github.com/mineiros-io/terraform-aws-ecs-service/tree/main/test
 
 <!-- markdown-link-check-enable -->
 
