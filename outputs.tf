@@ -6,6 +6,16 @@
 # OUTPUT ALL RESOURCES AS FULL OBJECTS
 # ----------------------------------------------------------------------------------------------------------------------
 
+output "ecs_service" {
+  description = "All attributes of the created `aws_ecs_service` resource."
+  value       = try(aws_ecs_service.service[0], {})
+}
+
+output "ecs_task_definition" {
+  description = "All attributes of the created `aws_ecs_service` resource."
+  value       = try(aws_ecs_task_definition.task[0], {})
+}
+
 # ----------------------------------------------------------------------------------------------------------------------
 # OUTPUT MODULE CONFIGURATION
 # ----------------------------------------------------------------------------------------------------------------------
