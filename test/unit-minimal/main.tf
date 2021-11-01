@@ -35,28 +35,49 @@ resource "aws_ecs_cluster" "ecs" {
   name = random_string.cluster_name.result
 }
 
+data "aws_vpc" "default" {
+  default = true
+}
+
+data "aws_subnet_ids" "default" {
+  vpc_id = data.aws_vpc.default.id
+}
+
+resource "aws_default_security_group" "default" {
+  vpc_id = data.aws_vpc.default.id
+}
+
+# DO NOT RENAME MODULE NAME
 module "test" {
   source = "../.."
 
+  # add only required arguments and no optional arguments
   name    = random_string.cluster_name.result
   cluster = aws_ecs_cluster.ecs.arn
   task_definition = {
-    name      = "nginx"
-    image     = "nginx:latest"
-    cpu       = 256
-    memory    = 512
-    essential = true
-    portMappings = [
-      {
-        containerPort = 80
-        hostPort      = 80
-      }
-    ]
+    network_mode = "awsvpc"
+    cpu          = 256
+    memory       = 512
+
+    container_definitions = jsonencode([{
+      name      = "nginx"
+      image     = "nginx:latest"
+      essential = true
+    }])
   }
-  # add only required arguments and no optional arguments
+
+  # add most/all optional arguments
+  launch_type = "FARGATE"
+
+  network_configuration = {
+    subnets          = data.aws_subnet_ids.default.ids
+    assign_public_ip = true
+    security_groups  = [aws_default_security_group.default.id]
+  }
 }
 
-output "all" {
-  description = "All outputs of the module."
-  value       = module.test
-}
+# outputs generate non-idempotent terraform plans so we disable them for now unless we need them.
+# output "all" {
+#   description = "All outputs of the module."
+#   value       = module.test
+# }
