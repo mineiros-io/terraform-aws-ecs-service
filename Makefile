@@ -93,6 +93,11 @@ test/unit-tests:
 	@echo "${YELLOW}[TEST] ${GREEN}Start Running Go Tests in Docker Container.${RESET}"
 	$(call go-test,./test -run $(TEST))
 
+## Generate README.md with Terradoc
+.PHONY: terradoc
+terradoc:
+	$(call quiet-command,terradoc -o README.md README.tfdoc.hcl)
+
 ## Clean up cache and temporary files
 .PHONY: clean
 clean:
