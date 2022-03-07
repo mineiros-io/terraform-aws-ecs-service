@@ -68,7 +68,20 @@ section {
       module "terraform-aws-ecs-service" {
         source = "git@github.com:mineiros-io/terraform-aws-ecs-service.git?ref=v0.0.1"
 
-        name = "name-of-service"
+        name   = "name-of-service"
+        cluser = "name-of-cluster"
+
+        task_definition = {
+          network_mode = "awsvpc"
+          cpu          = 256
+          memory       = 512
+
+          container_definitions = jsonencode([{
+            name      = "nginx"
+            image     = "nginx:latest"
+            essential = true
+          }])
+        }
       }
       ```
     END
